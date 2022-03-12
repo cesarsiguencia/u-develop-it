@@ -7,5 +7,7 @@ router.use(require('./candidatesRoutes')); //THIS WILL CALL OUR CANDIDATES ROUTE
 
 router.use(require('./partyRoutes'))  //THIS WILL CALL OUR party ROUTES
 
+router.use(require('./voterRoutes'))
+
 module.exports = router;
 
