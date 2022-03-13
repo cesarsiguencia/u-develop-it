@@ -9,5 +9,7 @@ router.use(require('./partyRoutes'))  //THIS WILL CALL OUR party ROUTES
 
 router.use(require('./voterRoutes'))
 
+router.use(require('./voteRoutes'))
+
 module.exports = router;
 
