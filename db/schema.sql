@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS candidates; 
-DROP TABLE IF EXISTS parties;
+DROP TABLE IF EXISTS candidates; --add these to start fresh all over again, however, not recommended for apps being used in public
+DROP TABLE IF EXISTS parties; --drop tables with foreign keys referencing other tables to avoid errors
 DROP TABLE IF EXISTS voters;
 DROP TABLE IF EXISTS votes;
 
@@ -24,7 +24,7 @@ CREATE TABLE voters (
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
   email VARCHAR(50) NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP 
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE votes  (
@@ -35,4 +35,4 @@ CREATE TABLE votes  (
   CONSTRAINT uc_voter UNIQUE (voter_id),
   CONSTRAINT fk_voter FOREIGN KEY (voter_id) REFERENCES voters(id) ON DELETE CASCADE,
   CONSTRAINT fk_candidate FOREIGN KEY (candidate_id) REFERENCES candidates(id) ON DELETE CASCADE 
-)
+);
