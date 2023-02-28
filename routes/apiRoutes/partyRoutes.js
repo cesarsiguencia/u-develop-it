@@ -1,7 +1,5 @@
 const express = require('express');
-
 const router = express.Router();
-
 const db = require('../../db/connection') // WE NEED TO REQUIRE THE MYSQL LANGUAGE AS IN THE SERVER.JS
 
 router.get('/parties', (req, res) => {

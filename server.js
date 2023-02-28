@@ -22,6 +22,12 @@ app.use((req, res) => {
     res.status(404).end(); //this will show the localhost not found chrome message, stick to this for 404s
 })
 
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+//ADDITIONAL CODE
 // Start server after DB connection
 // db.connect(err => {
 //     if (err) throw err;
@@ -31,7 +37,3 @@ app.use((req, res) => {
 //     });
 //   });
 
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
