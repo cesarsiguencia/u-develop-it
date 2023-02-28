@@ -56,7 +56,6 @@ router.post('/voter', ({ body }, res) => {
 });
 
 router.put('/voter/:id', (req, res) => {
-    //DATA VALIDATION
     const errors = inputCheck(req.body, 'email')
     if(errors){
         res.status(400).json( {error: errors })
