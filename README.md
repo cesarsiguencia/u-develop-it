@@ -4,17 +4,20 @@ This is my first back end project using a SQL database. The SQL version of choic
 
 U Develop It is a make believe web developer community in search of new club president. To select a president, the community decided to make MySQL database titled "election" to facilate the election process. The layout of the database is labeled below:
 
+
 ### Tables
 1) Candidates
 2) Parties (Candidates may or may not be part of a web development party, ex: "Heroes of HTML")
 3) Voters 
 4) Votes (Indicates which candidate the voter voted for with the use of primary keys)
 
+
 ### List of built APIs in this application
 - GET (ALL candidates, ONE candidate, ALL parties, ONE party, ALL voters, ONE voter, ALL votes, ALL votes that show count per candidate and their affilated party if any)
 - POST (ONE candidate, ONE voter, ONE vote) 
 - PUT (CHANGE a candidate's affilated party, CHANGE voter's email address)
 - DELETE (DELETE a candidate, DELETE a party, DELETE a voter)
+
 
 ### List of Foreign Keys
 - Candidates refer to affilated party through the party's primary key
@@ -24,6 +27,7 @@ U Develop It is a make believe web developer community in search of new club pre
     - If a voter leaves the club (DELETE route), the vote is deleted
 - Votes refer to the candidate chosen by the voter through the candidate's primary key
     - If a candidate withdraws from the race (DELETE route), the vote is deleted
+
 
 ### Installation
 1) Git clone or download the application and load on VSCode
@@ -38,7 +42,8 @@ U Develop It is a make believe web developer community in search of new club pre
 6) Install Insomnia and manually create the routes you wish to test
 7) Quit the MySQl shell and run 'npm start' in the terminal. If port 3010 is in use, kill it or use another port
 
-### Screenshots
+
+### Screenshots of Requests through Insomnia
 
 ![Screenshot 1](/media/sc-1.jpg) 
 
