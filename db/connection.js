@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2'); //USE MYSQL2, not MYSQL, for this to work with the API routes
 
 const db = mysql.createConnection({
     host:  "localhost",
