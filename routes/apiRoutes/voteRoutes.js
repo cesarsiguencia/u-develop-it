@@ -4,12 +4,6 @@ const db = require('../../db/connection')
 const inputCheck = require('../../utils/inputCheck')
 
 router.post('/vote', ({ body }, res) => {
-    // Data validation
-    // const errors = inputCheck(body, 'voter_id', 'candidate_id');
-    // if (errors) {
-    //   res.status(400).json({ error: errors });
-    //   return;
-    // }
   
     const sql = `INSERT INTO votes (voter_id, candidate_id) VALUES (?,?)`;
     const params = [body.voter_id, body.candidate_id];
@@ -17,8 +11,7 @@ router.post('/vote', ({ body }, res) => {
     db.query(sql, params, (err, result) => {
       if (err) {
         res.status(400).json({ error: err.message });
-        //PLACING AN ERROR JSON AFTER STATUS WILL LET SQL TELL THE ERR.MESSAGE THAT WOULD BE DISPLAYED FROM THE SQL SHELL TERMINAL. IF NOT MESSAGE IS INCLUDED, THE 400 WILL JUST GO ON FOREVER
-        //status(400) allows to send status along with json message chained after. sendStatus(400) will only allow 'Bad request' and no additional info
+
         return;
       }
       res.json({
@@ -29,7 +22,7 @@ router.post('/vote', ({ body }, res) => {
     });
   });
 
-router.get('/vote', (req,res) => {
+router.get('/votes', (req,res) => {
     const sql = `SELECT * FROM votes`;
 
     db.query(sql, (err, rows) => {

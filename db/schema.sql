@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS candidates; --add these to start fresh all over again, however, not recommended for apps being used in public
-DROP TABLE IF EXISTS parties; --drop tables with foreign keys referencing other tables to avoid errors
+DROP TABLE IF EXISTS candidates;
+DROP TABLE IF EXISTS parties; 
 DROP TABLE IF EXISTS voters;
 DROP TABLE IF EXISTS votes;
 

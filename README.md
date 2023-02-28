@@ -35,7 +35,7 @@ U Develop It is a make believe web developer community in search of new club pre
     - If this is your first time installing MySQL, please navigate to their documentation for proper installation into your computer and credential creation
 3) Change your package.json scripts to your chosing, preferred to include "start" : "node server.js" as one of your scripts
 4) Navigate to db/connection.js and include your MySQL user and password in the fields commented
-5) Go to the MySQL shell in your terminal and type the following commands to download the database from 'db'
+5) Go to the MySQL shell in your terminal and type the following commands to download the original database from 'db'
     - SOURCE db/db.sql
     - SOURCE db/schema.sql
     - SOURCE db/seeds.sql
