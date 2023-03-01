@@ -4,6 +4,13 @@ const db = require('../../db/connection')
 const inputCheck = require('../../utils/inputCheck')
 
 router.post('/vote', ({ body }, res) => {
+
+    const errors = inputCheck(body, 'voter_id', 'candidate_id');
+    if (errors) {
+      res.status(400).json({ error: errors });
+      return;
+    }
+  
     const sql = `INSERT INTO votes (voter_id, candidate_id) VALUES (?,?)`;
     const params = [body.voter_id, body.candidate_id];
   
@@ -19,36 +26,5 @@ router.post('/vote', ({ body }, res) => {
       });
     });
   });
-
-router.get('/votes', (req,res) => {
-    const sql = `SELECT * FROM votes`;
-
-    db.query(sql, (err, rows) => {
-        if(err){
-            res.status(500).json({ error: err.message });
-        }
-        res.json({
-            message: 'success',
-            data: rows
-        })
-    })
-});
-
-router.get('/votes', (req, res) => {
-  const sql = `SELECT candidates.*, parties.name AS party_name, COUNT(candidate_id) AS total_votes FROM votes
-  LEFT JOIN candidates ON votes.candidate_id = candidates.id
-  LEFT JOIN parties ON candidates.party_id = parties.id
-  GROUP BY candidate_id ORDER BY total_votes DESC`
-
-  db.query(sql, (err, total) => {
-    if(err){
-      res.status(500).json({ error: err.message})
-    }
-    res.json({
-      message:'success',
-      data: total
-    })
-  })
-})
 
 module.exports = router;
