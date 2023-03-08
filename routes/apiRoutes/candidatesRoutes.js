@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../db/connection') // WE NEED TO REQUIRE THE MYSQL LANGUAGE AS IN THE SERVER.JS
-const inputCheck = require('../../utils/inputCheck');  //RANDOM JS TO HELP US
+const db = require('../../db/connection') 
+const inputCheck = require('../../utils/inputCheck');  
 
 router.get('/candidates', (req, res) => {
     const sql = `SELECT candidates.*, parties.name 
@@ -50,10 +50,11 @@ router.delete('/candidate/:id', (req,res) => {
     const errors = inputCheck(req.body, 'party_id');
 
     if (errors) {
-        res.status(400).json({ error: errors });
-        return;
+    res.status(400).json({ error: errors });
+    return;
     }
-    
+
+
     const sql = `DELETE FROM candidates WHERE id = ?`;
     const params = [req.params.id]
 
@@ -101,19 +102,9 @@ router.post('/candidate', ({ body }, res) => {
 
 // Update a candidate's party
 router.put('/candidate/:id', (req, res) => {
-    const sql = `UPDATE candidates SET party_id = ? WHERE id = ?`;
-
-    console.log(req.body)
-    const errors = inputCheck(req.body, 'party_id');
-
-    if (errors) {
-        res.status(400).json({ error: errors });
-        return;
-    }
-
-    //params will include the new value change to put in the selected ID that will be changed. The order of the params values matter for the SQL query to work          
+    const sql = `UPDATE candidates SET party_id = ? 
+                 WHERE id = ?`;
     const params = [req.body.party_id, req.params.id];
-    
     db.query(sql, params, (err, result) => {
       if (err) {
         res.status(400).json({ error: err.message });
@@ -134,6 +125,3 @@ router.put('/candidate/:id', (req, res) => {
 
 
 module.exports = router
-
-
-
